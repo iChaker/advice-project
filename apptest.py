@@ -13,12 +13,13 @@ class FlaskAppTests(unittest.TestCase):
         tested_app.app.config['TESTING'] = True
         self.app = tested_app.app.test_client()
 
-
     def test_good_advice(self):
+        print("hahaha")
         r = self.app.get('/goodadvice')
         
         self.assertIn(r.data,good_advice_list )
 
     def test_bad_advice(self):
         r = self.app.get('/badadvice')
+        print("AWAHWAHWHAH")
         self.assertEqual(r.data, bad_advice_list)
