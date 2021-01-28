@@ -1,0 +1,47 @@
+version: '3'
+services:
+    server:
+      image: advice
+      stop_grace_period: 30s
+      deploy:
+        replicas: 3
+        update_config:
+          delay: 60s
+          parallelism: 1
+          failure_action: rollback
+      ports:
+        - 5000:5000
+      networks:
+        - cluster_network
+    prometheus:
+        image: prom/prometheus
+        command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml
+        volumes:
+            - ./prometheus:/etc/prometheus
+            - prometheus-data:/prometheus
+        networks:
+            - cluster_network
+        depends_on: 
+            - server
+    grafana:
+        image: grafana/grafana
+        ports:
+            - 3000:3000
+        volumes:
+            - grafana_data:/var/lib/grafana
+            - ./grafana/provisioning:/etc/grafana/provisioning
+        environment:
+            - GF_SECURITY_ADMIN_USER=admin
+            - GF_SECURITY_ADMIN_PASSWORD=admin
+            - GF_USERS_ALLOW_SIGN_UP=false
+        networks:
+            - cluster_network
+        depends_on:
+            - prometheus
+
+
+volumes:
+    prometheus-data:
+    grafana_data:
+networks:
+    cluster_network:
