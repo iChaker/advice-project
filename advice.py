@@ -6,7 +6,7 @@ import random
 app = Flask(__name__)
 
 
-good_advice_list = ["Show up fully","Don't try to impress everyone","The simplest solution is often the best"]
+good_advice_list = ["Show up fully","Don't try to impress everyone","The simplest solution is often the best","Work hard play hard"]
 
 bad_advice_list = ["Always be positive","All decisions should be based on logic","Fake it till you make it"]
 
