@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 good_advice_list = ["Show up fully","Don't try to impress everyone","The simplest solution is often the best","Work hard play hard"]
 
-bad_advice_list = ["Always be positive","All decisions should be based on logic","Fake it till you make it"]
+bad_advice_list = ["Always be positive","All decisions should be based on logic","Fake it till you make it","Listen to your heart"]
 
 good_advice_graph = Counter('good_advice_request','total number of good advice served')
 bad_advice_graph =  Counter('bad_advice_request','total number of bad advice served')
