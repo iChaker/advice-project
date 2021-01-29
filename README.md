@@ -1,4 +1,4 @@
-Prime as a Service
+Advice
 =========
 Advice is a simple application that provides powerful pieces of advice using the latest state of the art AI wisdom distillation algorithms.
 This service was deployed using a Docker Swarm cluster and monitored with Grafana and Prometheus.
